@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "The docker.com password can be found in LastPass"
+docker login --username=driftrock
+docker build --tag driftrock/http-redirect-proxy:latest .
+docker push driftrock/http-redirect-proxy
