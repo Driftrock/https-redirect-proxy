@@ -1,0 +1,6 @@
+version: '3'
+services:
+  https-redirect-proxy:
+    build: .
+    ports:
+      - "8096:80"
