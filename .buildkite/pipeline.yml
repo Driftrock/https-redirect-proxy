@@ -1,3 +1,8 @@
 steps:
-  - label: ":wave: Hello"
-    command: echo "Hello from branch $BUILDKITE_BRANCH, commit $BUILDKITE_COMMIT"
+  - label: ':hammer: Check nginx config'
+    command: nginx -t
+    plugins:
+      docker-compose#v5.12.0:
+        run: https-redirect-proxy
+        config:
+          - docker-compose.yml

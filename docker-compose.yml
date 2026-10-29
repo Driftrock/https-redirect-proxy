@@ -1,0 +1,4 @@
+services:
+  https-redirect-proxy:
+    build:
+      context: .
