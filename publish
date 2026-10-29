@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "The docker.com password can be found in JumpCloud Password Manager"
-IMAGE_NAME=driftrock/https-redirect-proxy:1.31.8-a
+IMAGE_NAME=driftrock/https-redirect-proxy:1.31.8-b
 docker login --username=driftrock
-docker build --tag $IMAGE_NAME .
+docker build --pull --tag $IMAGE_NAME .
 docker push $IMAGE_NAME
