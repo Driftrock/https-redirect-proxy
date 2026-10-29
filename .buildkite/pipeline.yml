@@ -1,0 +1,3 @@
+steps:
+  - label: ":wave: Hello"
+    command: echo "Hello from branch $BUILDKITE_BRANCH, commit $BUILDKITE_COMMIT"
