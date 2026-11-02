@@ -2,7 +2,7 @@
 
 nginx sidecar that runs next to an app container in the same pod. nginx listens on port 80, redirects HTTP to HTTPS (using `X-Forwarded-Proto` from the GCP load balancer) and forwards HTTPS traffic to the app container on port 8080.
 
-Used by admin, lead-store, inbound-leads, crm-sender and credentials_api (`kube/deployments/*.yml` in each repo).
+Used by admin, credentials_api, crm-sender, flow, inbound-leads, lead-store and public-gateway (`kube/deployments/*.yml` in each repo).
 
 ## Image
 
