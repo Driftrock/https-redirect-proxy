@@ -1,0 +1,28 @@
+env:
+  APP_NAME: https-redirect-proxy
+  OLD_GCLOUD_PROJECT: platform-156214
+
+steps:
+  - label: ':hammer: Check nginx config'
+    command: nginx -t
+    plugins:
+      docker-compose#v5.12.0:
+        run: https-redirect-proxy
+        config:
+          - docker-compose.yml
+
+  - label: ':label: Check image tag is new'
+    command:
+      - IMAGE_TAG=$$(/bin/bash .buildkite/image-tag.sh)
+      - export IMAGE_TAG
+      - /bin/bash deployment-scripts/k8s/image/check_tag_is_new.sh
+
+  - wait
+
+  - label: ':docker: Build and push image'
+    command:
+      - IMAGE_TAG=$$(/bin/bash .buildkite/image-tag.sh)
+      - export IMAGE_TAG
+      - /bin/bash deployment-scripts/k8s/image/run.sh
+    branches:
+      - 'master'
