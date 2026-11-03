@@ -12,6 +12,13 @@ steps:
           - docker-compose.yml
 
   - label: ':label: Check image tag is new'
+    if_changed: &image_files
+      - Dockerfile
+      - nginx.conf
+      - default.conf
+      - docker-compose.yml
+      - REVISION
+      - .buildkite/image-tag.sh
     command:
       - IMAGE_TAG=$$(/bin/bash .buildkite/image-tag.sh)
       - export IMAGE_TAG
@@ -20,6 +27,7 @@ steps:
   - wait
 
   - label: ':docker: Build and push image'
+    if_changed: *image_files
     command:
       - IMAGE_TAG=$$(/bin/bash .buildkite/image-tag.sh)
       - export IMAGE_TAG
