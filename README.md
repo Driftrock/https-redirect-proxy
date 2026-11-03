@@ -13,6 +13,8 @@ Used by admin, credentials_api, crm-sender, flow, inbound-leads, lead-store and 
 
 Built and pushed by Buildkite on merge to `master`. Tags are never overwritten: a build fails if the tag already exists.
 
+Only changes to files that go into the image (listed under `if_changed` in `.buildkite/pipeline.yml`) build a new image and need a new tag. Other changes, like this README, skip the tag check and the push.
+
 ## Releasing a new version
 
 1. Make the change:
