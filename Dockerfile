@@ -1,4 +1,4 @@
-ARG NGINX_VERSION=1.31.8
+ARG NGINX_VERSION=1.31.9
 FROM nginx:${NGINX_VERSION}-alpine-slim
 
 COPY nginx.conf /etc/nginx/nginx.conf
